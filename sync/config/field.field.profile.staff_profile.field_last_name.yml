@@ -1,0 +1,19 @@
+uuid: d91f666c-6c09-4625-a759-897c554c085c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.profile.field_last_name
+    - profile.type.staff_profile
+id: profile.staff_profile.field_last_name
+field_name: field_last_name
+entity_type: profile
+bundle: staff_profile
+label: 'Last Name'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

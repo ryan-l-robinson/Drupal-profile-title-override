@@ -1,0 +1,19 @@
+uuid: 90f1821c-7e60-4c88-8f0e-931f582aeb54
+langcode: en
+status: true
+dependencies:
+  module:
+    - profile
+    - text
+id: profile.field_bio
+field_name: field_bio
+entity_type: profile
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

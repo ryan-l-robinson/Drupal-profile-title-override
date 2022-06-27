@@ -1,0 +1,19 @@
+uuid: be1c7900-924b-4c00-a753-7e14e4a6bf98
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.profile.field_first_name
+    - profile.type.staff_profile
+id: profile.staff_profile.field_first_name
+field_name: field_first_name
+entity_type: profile
+bundle: staff_profile
+label: 'First Name'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,13 @@
+uuid: 0c618367-7356-4d8d-8e56-acf4b72f2229
+langcode: en
+status: true
+dependencies: {  }
+id: staff_profile
+label: 'Staff Profile'
+display_label: ''
+multiple: false
+registration: false
+roles:
+  authenticated: authenticated
+allow_revisions: false
+new_revision: false

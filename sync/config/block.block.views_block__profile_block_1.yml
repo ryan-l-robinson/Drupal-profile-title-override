@@ -1,0 +1,29 @@
+uuid: d81dd2ef-cb9b-48c4-b9da-bc0121f8256c
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.profile
+  module:
+    - system
+    - views
+  theme:
+    - olivero
+id: views_block__profile_block_1
+theme: olivero
+region: content_above
+weight: 0
+provider: null
+plugin: 'views_block:profile-block_1'
+settings:
+  id: 'views_block:profile-block_1'
+  label: ''
+  label_display: '0'
+  provider: views
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '/profile/*'

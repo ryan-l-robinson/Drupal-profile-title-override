@@ -1,0 +1,71 @@
+uuid: 3db8228e-77c4-4ebc-91a5-17d989c93f3c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.profile.staff_profile.field_bio
+    - field.field.profile.staff_profile.field_first_name
+    - field.field.profile.staff_profile.field_last_name
+    - profile.type.staff_profile
+  module:
+    - layout_builder
+    - layout_discovery
+    - text
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          d174413b-73fb-4094-bea0-599dddd5c646:
+            uuid: d174413b-73fb-4094-bea0-599dddd5c646
+            region: content
+            configuration:
+              id: 'field_block:profile:staff_profile:field_bio'
+              label: Bio
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+        third_party_settings: {  }
+id: profile.staff_profile.default
+targetEntityType: profile
+bundle: staff_profile
+mode: default
+content:
+  field_bio:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_first_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_last_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

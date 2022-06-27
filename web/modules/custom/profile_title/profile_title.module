@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * Implements hook_preprocess_html
+ * 
+ * Overrides the "Staff Profile #" title with the first name and last name of the profiled staff member instead
+ */
+function profile_title_preprocess_html(&$variables) {
+  if ($variables['root_path'] == 'profile') {
+    //Get the ID from the URL. This technique would need to change if the profile module allowed for changing the URL.
+    $profile_id = explode("/",$_SERVER['REQUEST_URI'])[2];
+
+    if (isset($profile_id)) {
+      //Load the profile
+      $profile = \Drupal::entityTypeManager()->getStorage('profile')->load($profile_id);
+
+      if (isset($profile)) {
+        $first_name = $profile->get('field_first_name')->getString();
+        $last_name = $profile->get('field_last_name')->getString();
+
+        if (isset($first_name) && isset($last_name)) {
+          //Change the title to first name and last name
+          $variables['head_title']['title'] = "$first_name $last_name";
+        }
+      }
+    }
+  }
+}
