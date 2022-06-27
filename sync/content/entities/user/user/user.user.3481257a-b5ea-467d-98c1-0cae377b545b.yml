@@ -1,0 +1,40 @@
+uuid:
+  -
+    value: 3481257a-b5ea-467d-98c1-0cae377b545b
+langcode:
+  -
+    value: en
+preferred_langcode:
+  -
+    value: en
+preferred_admin_langcode: {  }
+name:
+  -
+    value: ''
+mail:
+  value: null
+timezone:
+  -
+    value: ''
+created:
+  -
+    value: '2021-12-19T22:48:35+00:00'
+    format: 'Y-m-d\TH:i:sP'
+changed:
+  -
+    value: '2021-12-19T22:48:35+00:00'
+    format: 'Y-m-d\TH:i:sP'
+default_langcode:
+  -
+    value: true
+_content_sync:
+  entity_type: user
+  is_anonymous: true
+pass:
+  -
+    value: null
+    pre_hashed: true
+status:
+  value: '0'
+roles:
+  - anonymous

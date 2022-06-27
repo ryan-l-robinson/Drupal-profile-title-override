@@ -1,0 +1,32 @@
+uuid:
+  -
+    value: 8eaf81ad-4eeb-4d0f-af84-59dd831e927c
+langcode:
+  -
+    value: en
+name:
+  -
+    value: drupal_admin
+created:
+  -
+    value: '2021-12-19T22:48:35+00:00'
+    format: 'Y-m-d\TH:i:sP'
+changed:
+  -
+    value: '2021-12-19T22:51:18+00:00'
+    format: 'Y-m-d\TH:i:sP'
+default_langcode:
+  -
+    value: true
+_content_sync:
+  entity_type: user
+pass:
+  -
+    value: $S$EZyxYVuBNIdouHym2qOyeDPKD/34JhSaMM0e6Rg4b2BTIeNqsJor
+    pre_hashed: true
+mail:
+  value: admin@example.com
+status:
+  value: '1'
+roles:
+  - authenticated

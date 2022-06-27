@@ -1,0 +1,55 @@
+image:
+  file: .gitpod/GitPod.Dockerfile
+
+#Tasks here are the specific installation of this site, while the Dockerfile is a general Drupal LAMP stack
+tasks:
+  - init: |
+      sudo mysql -e "CREATE DATABASE IF NOT EXISTS drupal"
+      composer install
+      sudo cp .gitpod/drupal.settings.php web/sites/default/settings.php
+      sudo cp .gitpod/local.services.yml web/sites/local.services.yml
+      vendor/drush/drush/drush -y site-install minimal --existing-config
+      vendor/drush/drush/drush -y content-sync:import --entity-types=block_content,file,node
+      home_id=$(vendor/drush/drush/drush sql-query 'SELECT nid FROM node_field_data where type="home" and status="1" and title="Home" limit 1;')
+      if [[ ! -z ${home_id} ]]
+      then
+        vendor/drush/drush/drush cset -y system.site page.front /node/$home_id
+      fi
+      vendor/drush/drush/drush user:password admin "ZNB*ufm1tyz4rwc@yzk"
+      echo 'alias drush="/workspace/drupal-gitpod/vendor/drush/drush/drush"' >> ~/.bashrc
+      vendor/drush/drush/drush php-eval 'node_access_rebuild();'
+      vendor/drush/drush/drush cron
+    command: |
+      source ~/.bashrc
+      apachectl start
+
+ports:
+  - port: 8001
+    onOpen: open-browser
+  - port: 8828
+    onOpen: ignore
+  - port: 8829
+    onOpen: ignore
+  - port: 3306
+    onOpen: ignore
+
+github:
+  prebuilds:
+    master: true
+    branches: true
+    pullRequests: true
+    pullRequestsFromForks: true
+    addCheck: true
+    addComment: false
+    addBadge: true
+    addLabel: true
+
+vscode:
+  extensions:
+    - eamodio.gitlens
+    - skippednote.VS-code-drupal
+    - cweijan.vscode-mysql-client2
+    - esbenp.prettier-vscode
+    - gruntfuggly.todo-tree
+    - mblode.twig-language
+    - vscode-icons-team.vscode-icons
