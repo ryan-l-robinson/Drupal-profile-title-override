@@ -3,12 +3,12 @@
 /**
  * Implements hook_preprocess_html
  * 
- * Overrides the "Staff Profile #" title with the first name and last name of the profiled staff member instead
+ * Overrides the "Public Profile #[ID]" title with the first name and last name of the profiled staff member instead
  */
 function profile_title_preprocess_html(&$variables) {
-  if ($variables['root_path'] == 'profile') {
-    //Get the ID from the URL. This technique would need to change if the profile module allowed for changing the URL.
-    $profile_id = explode("/",$_SERVER['REQUEST_URI'])[2];
+  if (stripos($variables['head_title']['title'],"Public Profile") !== false) {
+    //Get the ID from the original title to be replaced
+    $profile_id = substr($variables['head_title']['title'],stripos($variables['head_title']['title'],"#") + 1);
 
     if (isset($profile_id)) {
       //Load the profile
@@ -25,4 +25,19 @@ function profile_title_preprocess_html(&$variables) {
       }
     }
   }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter
+ * 
+ * Adds a warning to the admin page for the profile, to advise against changing the title
+ */
+function profile_title_form_profile_type_edit_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  $message = [
+              '#type' => 'container',
+              '#markup' => '<p>Warning: Do not change the display label of the staff public profile without altering the corresponding code in the custom module profile_title.</p>
+              <p>Failing to do so will result in the title of the profile page reverting back to showing the generic profile name instead of the staff member name.</p>
+              ',
+            ];
+  \Drupal::messenger()->addWarning($message);
 }
