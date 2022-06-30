@@ -6,7 +6,7 @@
  * Overrides the "Public Profile #[ID]" title with the first name and last name of the profiled staff member instead
  */
 function profile_title_preprocess_html(&$variables) {
-  if (stripos($variables['head_title']['title'],"Public Profile") !== false) {
+  if (stripos($variables['head_title']['title'],"Staff Profile") !== false) {
     //Get the ID from the original title to be replaced
     $profile_id = substr($variables['head_title']['title'],stripos($variables['head_title']['title'],"#") + 1);
 

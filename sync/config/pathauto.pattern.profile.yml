@@ -1,0 +1,22 @@
+uuid: 82afe72a-962d-4b5a-9fe4-aa70c7924753
+langcode: en
+status: true
+dependencies:
+  module:
+    - profile
+id: profile
+label: Profile
+type: 'canonical_entities:profile'
+pattern: '/staff/[profile:field_first_name]-[profile:field_last_name]'
+selection_criteria:
+  d1534f00-9a68-4c26-a83b-c5790950d951:
+    id: 'entity_bundle:profile'
+    negate: false
+    uuid: d1534f00-9a68-4c26-a83b-c5790950d951
+    context_mapping:
+      profile: profile
+    bundles:
+      staff_profile: staff_profile
+selection_logic: and
+weight: -5
+relationships: {  }
